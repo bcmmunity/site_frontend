@@ -1,9 +1,9 @@
 <template>
-  <div class="page-home">
+  <div class="homePage">
     <div class="container">
-      <section class="main-news">
+      <section class="homePage-mainNews">
         <h1 class="is-size-3">Новости</h1>
-        <div class="news-tiles">
+        <div class="mainNews-newsTiles">
           <div class="tile">
             <div class="tile is-parent is-8">
               <div class="tile is-child">
@@ -24,7 +24,7 @@
           <button class="button is-link is-outlined">Learn more</button>
         </div>
       </section>
-      <section class="news-cards">
+      <section class="homePage-newsCards">
         <div class="columns">
           <div class="column">
             <NewsCard />
@@ -60,17 +60,17 @@ export default {
 
 
 <style lang="less" scoped>
-.page-home {
+.homePage {
   padding: 20px 0;
 
-  .main-news {
+  &-mainNews {
     margin-bottom: 60px;
-    .news-tiles {
+    .mainNews-newsTiles {
       margin: 0 -0.75rem;
       margin-bottom: 30px;
     }
   }
-  .news-cards {
+  &-newsCards {
     margin-bottom: 60px;
 
     .columns {
