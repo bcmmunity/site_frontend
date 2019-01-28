@@ -1,3 +1,8 @@
+import 'bulma/css/bulma.css'
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
+import './global.less'
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
