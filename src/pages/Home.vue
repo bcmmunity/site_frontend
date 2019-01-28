@@ -20,12 +20,26 @@
             </div>
           </div>
         </div>
-        <p class="has-text-centered">
-          <button class="button is-info is-outlined">Узнать больше</button>
-        </p>
+        <div class="buttons is-centered">
+          <button class="button is-link is-outlined">Learn more</button>
+        </div>
       </section>
       <section class="news-cards">
-
+        <div class="columns">
+          <div class="column">
+            <NewsCard />
+          </div>
+          <div class="column">
+            <NewsCard />
+          </div>
+          <div class="column">
+            <NewsCard />
+          </div>
+        </div>
+        <div class="buttons is-centered">
+          <button class="button is-link is-outlined">Read more</button>
+          <button class="button is-link">Request a quote</button>
+        </div>
       </section>
     </div>
   </div>
@@ -33,11 +47,13 @@
 
 <script>
 import NewsTile from "../components/home/NewsTile";
+import NewsCard from "../components/home/NewsCard";
 
 export default {
   name: "Home",
   components: {
-    NewsTile
+    NewsTile,
+    NewsCard
   }
 };
 </script>
@@ -48,13 +64,19 @@ export default {
   padding: 20px 0;
 
   .main-news {
+    margin-bottom: 60px;
     .news-tiles {
       margin: 0 -0.75rem;
-      margin-bottom: 15px;
+      margin-bottom: 30px;
     }
   }
+  .news-cards {
+    margin-bottom: 60px;
 
-
+    .columns {
+      margin-bottom: 30px;
+    }
+  }
 }
 </style>
 

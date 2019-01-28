@@ -33,8 +33,7 @@ export default {
   name: "NewsTile",
   data() {
     return {
-      url:
-        "https://static.addtoany.com/images/dracaena-cinnabari.jpg"
+      url: "https://static.addtoany.com/images/dracaena-cinnabari.jpg"
     };
   },
   props: {
