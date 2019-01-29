@@ -26,14 +26,18 @@
       </section>
       <section class="homePage-newsCards">
         <div class="columns">
-          <div class="column">
-            <NewsCard />
-          </div>
-          <div class="column">
-            <NewsCard />
-          </div>
-          <div class="column">
-            <NewsCard />
+          <div
+            class="column"
+            v-for="(card, index) in newsCards"
+            :key="index"
+          >
+            <NewsCard
+              :imgUrl="card.url"
+              :infoTheme="card.headline"
+              :infoDate="card.date"
+              :contentHeader="card.headline"
+              :contentText="card.text"
+            />
           </div>
         </div>
         <div class="buttons is-centered">
@@ -49,11 +53,19 @@
 import NewsTile from "../components/home/NewsTile";
 import NewsCard from "../components/home/NewsCard";
 
+import { mapGetters } from "vuex";
+
 export default {
   name: "Home",
   components: {
     NewsTile,
     NewsCard
+  },
+  created() {
+    this.$store.dispatch("home/loadNewsTiles");
+  },
+  computed: {
+    ...mapGetters("home", ["newsCards"])
   }
 };
 </script>
