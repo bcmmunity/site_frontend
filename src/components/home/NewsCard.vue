@@ -25,6 +25,28 @@ export default {
     return {
       url: "https://static.addtoany.com/images/dracaena-cinnabari.jpg"
     }
+  },
+  props: {
+    imgUrl: {
+      type: String,
+      required: true
+    },
+    infoTheme: {
+      type: String,
+      required: true
+    },
+    infoDate: {
+      type: String,
+      required: true
+    },
+    contentHeader: {
+      type: String,
+      required: true
+    },
+    contentText: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>
