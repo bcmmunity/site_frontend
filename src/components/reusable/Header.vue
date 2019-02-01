@@ -8,15 +8,13 @@
           </div>
         </div>
         <div class="right">
-          <div class="socials">
-            <div
-              class="icon"
+          <p class="socials">
+            <SocialIcon
               v-for="(icon, index) in icons"
               :key="index"
-            >
-              <i :class="`fab fa-${icon}`"></i>
-            </div>
-          </div>
+              :icon="icon"
+            />
+          </p>
           <div class="language">
             <div class="dropdown is-hoverable">
               <div
@@ -55,11 +53,12 @@
             </div>
           </div>
           <div class="navbar-end">
-            <a
+            <router-link
+              v-for="({text, link}, index) in pageLinks"
+              :to="link"
               class="navbar-item"
-              v-for="(link, index) in pageLinks"
               :key="index"
-            >{{link}}</a>
+            >{{text}}</router-link>
           </div>
         </div>
       </div>
@@ -68,12 +67,30 @@
 </template>
 
 <script>
+import SocialIcon from "./SocialIcon";
+
 export default {
   name: "Header",
+  components: {
+    SocialIcon
+  },
   data() {
     return {
-      icons: ["twitter", "facebook-f", "instagram"],
-      pageLinks: ["Главная", "Мы", "Сотрудничество"],
+      icons: ["fab fa-twitter", "fab fa-facebook-f", "fab fa-instagram"],
+      pageLinks: [
+        {
+          text: "Главная",
+          link: "/"
+        },
+        {
+          text: "Мы",
+          link: "/we_are"
+        },
+        {
+          text: "Сотрудничество",
+          link: "/cooperation"
+        }
+      ],
       showLanguageDropdown: false
     };
   },
@@ -98,26 +115,17 @@ export default {
     .right {
       display: flex;
       align-items: center;
+
+      .socials {
+        width: 120px;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 20px;
+      }
     }
 
     .phone {
       text-decoration: underline;
-    }
-
-    .socials {
-      margin-right: 20px;
-      .icon {
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-        background-color: #555;
-        border-radius: 5px;
-        color: #ffffff;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
     }
   }
 }

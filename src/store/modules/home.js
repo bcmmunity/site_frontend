@@ -16,7 +16,7 @@ const mutations = {
 }
 
 const actions = {
-  loadNewsTiles({commit}) {
+  loadNewsCards({commit}) {
     api.getNewsCards()
       .then(cards => commit("UPDATE_NEWS_CARDS", cards))
   }

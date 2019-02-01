@@ -1,9 +1,8 @@
 <template>
   <div class="homePage">
     <div class="container">
-      <section class="homePage-mainNews">
-        <h1 class="is-size-3">Новости</h1>
-        <div class="mainNews-newsTiles">
+      <section class="homePage-news">
+        <div class="homePage-news-tiles">
           <div class="tile">
             <div class="tile is-parent is-8">
               <div class="tile is-child">
@@ -19,30 +18,30 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="buttons is-centered">
-          <button class="button is-link is-outlined">Learn more</button>
-        </div>
-      </section>
-      <section class="homePage-newsCards">
-        <div class="columns">
-          <div
-            class="column"
-            v-for="(card, index) in newsCards"
-            :key="index"
-          >
-            <NewsCard
-              :imgUrl="card.url"
-              :infoTheme="card.headline"
-              :infoDate="card.date"
-              :contentHeader="card.headline"
-              :contentText="card.text"
-            />
+          <div class="buttons is-centered">
+            <button class="button is-link is-outlined">Learn more</button>
           </div>
         </div>
-        <div class="buttons is-centered">
-          <button class="button is-link is-outlined">Read more</button>
-          <button class="button is-link">Request a quote</button>
+        <div class="homePage-news-cards">
+          <div class="columns">
+            <div
+              class="column"
+              v-for="(card, index) in newsCards"
+              :key="index"
+            >
+              <NewsCard
+                :imgUrl="card.url"
+                :infoTheme="card.headline"
+                :infoDate="card.date"
+                :contentHeader="card.headline"
+                :contentText="card.text"
+              />
+            </div>
+          </div>
+          <div class="buttons is-centered">
+            <button class="button is-link is-outlined">Read more</button>
+            <button class="button is-link">Request a quote</button>
+          </div>
         </div>
       </section>
     </div>
@@ -53,7 +52,7 @@
 import NewsTile from "../components/home/NewsTile";
 import NewsCard from "../components/home/NewsCard";
 
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Home",
@@ -62,10 +61,13 @@ export default {
     NewsCard
   },
   created() {
-    this.$store.dispatch("home/loadNewsTiles");
+    this.loadNewsCards();
   },
   computed: {
     ...mapGetters("home", ["newsCards"])
+  },
+  methods: {
+    ...mapActions("home", ["loadNewsCards"])
   }
 };
 </script>
@@ -73,20 +75,14 @@ export default {
 
 <style lang="less" scoped>
 .homePage {
-  padding: 20px 0;
-
-  &-mainNews {
-    margin-bottom: 60px;
-    .mainNews-newsTiles {
-      margin: 0 -0.75rem;
+  padding: 30px 0;
+  &-news {
+    &-tiles {
+      margin: -0.75rem;
       margin-bottom: 30px;
-    }
-  }
-  &-newsCards {
-    margin-bottom: 60px;
-
-    .columns {
-      margin-bottom: 30px;
+      .buttons {
+        margin: 20px 0;
+      }
     }
   }
 }
