@@ -4,7 +4,7 @@
       <figure class="ourTeamCard-media__photo image is-square">
         <img
           class="is-rounded"
-          src="https://static.addtoany.com/images/dracaena-cinnabari.jpg"
+          :src="photo"
           alt="photo"
         >
       </figure>
@@ -32,11 +32,18 @@
 
 <script>
 import SocialIcon from "../../reusable/SocialIcon";
+import defaultPhoto from "../../../assets/default.jpg";
 
 export default {
   name: "OurTeamCard",
   components: {
     SocialIcon
+  },
+  props: {
+    photo: {
+      type: String,
+      default: defaultPhoto
+    }
   },
   data() {
     return {
@@ -57,6 +64,13 @@ export default {
     padding: 0 15px;
     &__photo {
       margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
     &__socials {
       display: flex;
@@ -65,6 +79,12 @@ export default {
   }
   &-content {
     padding: 0 15px;
+    &__mail {
+      padding: 5px 0;
+    }
+    &__description {
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

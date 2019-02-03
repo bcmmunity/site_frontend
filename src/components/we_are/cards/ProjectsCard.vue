@@ -3,7 +3,7 @@
     <div class="projectsCard-media">
       <figure class="projectsCard-media__image image is-square">
         <img
-          src="https://static.addtoany.com/images/dracaena-cinnabari.jpg"
+          :src="photo"
           alt="img"
         >
       </figure>
@@ -26,8 +26,16 @@
 </template>
 
 <script>
+import defaultPhoto from "../../../assets/default.jpg";
+
 export default {
-  name: "ProjectsCard"
+  name: "ProjectsCard",
+  props: {
+    photo: {
+      type: String,
+      default: defaultPhoto
+    }
+  }
 };
 </script>
 

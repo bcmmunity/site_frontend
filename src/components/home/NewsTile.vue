@@ -2,7 +2,7 @@
   <div class="news-card">
     <figure
       class="image is-square"
-      :style="`background-image: url('${url}')`"
+      :style="`background-image: url('${photo}')`"
     ></figure>
     <div class="news-info">
       <p class="news-theme">UX Design</p>
@@ -13,7 +13,7 @@
         <div class="author">
           <figure
             class="image is-24x24 circle"
-            :style="`background-image: url('${url}')`"
+            :style="`background-image: url('${photo}')`"
           ></figure>
           <span>Google</span>
         </div>
@@ -29,14 +29,15 @@
 </template>
 
 <script>
+import defaultImage from "../../assets/default.jpg";
+
 export default {
   name: "NewsTile",
-  data() {
-    return {
-      url: "https://static.addtoany.com/images/dracaena-cinnabari.jpg"
-    };
-  },
   props: {
+    photo: {
+      type: String,
+      default: defaultImage
+    },
     small: {
       type: Boolean,
       required: false,

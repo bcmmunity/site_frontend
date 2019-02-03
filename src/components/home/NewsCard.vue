@@ -2,7 +2,7 @@
   <div class="newsCard">
     <div class="newsCard-image">
       <figure class="image is-16by9">
-        <img :src="url" alt="news-image">
+        <img :src="photo" alt="news-image">
       </figure>
     </div>
     <div class="newsCard-info">
@@ -19,17 +19,14 @@
 </template>
 
 <script>
+import defaultImage from "../../assets/default.jpg"
+
 export default {
   name: "NewsCard",
-  data() {
-    return {
-      url: "https://static.addtoany.com/images/dracaena-cinnabari.jpg"
-    }
-  },
   props: {
-    imgUrl: {
+    photo: {
       type: String,
-      required: true
+      default: defaultImage
     },
     infoTheme: {
       type: String,

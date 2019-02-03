@@ -12,8 +12,8 @@
         </div>
       </div>
       <div class="column about-content__image">
-        <figure>
-          <img src="https://static.addtoany.com/images/dracaena-cinnabari.jpg" alt="img">
+        <figure class="image is-4by3">
+          <img :src="photo" alt="img">
         </figure>
       </div>
     </div>
@@ -21,8 +21,15 @@
 </template>
 
 <script>
+import defaultImage from "../../assets/default.jpg";
+
 export default {
-  
+  props: {
+    photo: {
+      type: String,
+      default: defaultImage
+    }
+  }
 }
 </script>
 
