@@ -2,15 +2,18 @@
   <div class="newsCard">
     <div class="newsCard-image">
       <figure class="image is-16by9">
-        <img :src="photo" alt="news-image">
+        <img
+          :src="photo"
+          alt="news-image"
+        >
       </figure>
     </div>
     <div class="newsCard-info">
-      <span>Creative Process | September 22, 2017</span>
+      <span>{{infoTheme}} | {{offsetDate(infoDate)}}</span>
     </div>
     <div class="newsCard-content">
-      <h1 class="is-size-5">How to Hire the Best Employees to Your Company?</h1>
-      <p>Our HR Director shares his experience how to fill positions with the best candidates, where to find talents, and how to attract professionals to your business.</p>
+      <h1 class="is-size-5">{{contentHeader}}</h1>
+      <p>{{contentText}}</p>
     </div>
     <div class="newsCard-button">
       <a>Read more</a>
@@ -19,7 +22,8 @@
 </template>
 
 <script>
-import defaultImage from "../../assets/default.jpg"
+import defaultImage from "../../assets/default.jpg";
+import moment from "moment";
 
 export default {
   name: "NewsCard",
@@ -33,7 +37,7 @@ export default {
       required: true
     },
     infoDate: {
-      type: String,
+      type: Date,
       required: true
     },
     contentHeader: {
@@ -44,8 +48,15 @@ export default {
       type: String,
       required: true
     }
+  },
+  methods: {
+    offsetDate() {
+      return moment(this.infoDate)
+        .locale("ru")
+        .fromNow();
+    }
   }
-}
+};
 </script>
 
 <style lang="less" scoped>

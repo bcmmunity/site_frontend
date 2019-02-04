@@ -5,9 +5,14 @@
       :style="`background-image: url('${photo}')`"
     ></figure>
     <div class="news-info">
-      <p class="news-theme">UX Design</p>
+      <p class="news-theme">
+        <span
+          v-for="(tag, index) in tags"
+          :key="index"
+        >{{tag}}</span>
+      </p>
       <h1 :class="{'news-headline': true, 'is-size-4': !small, 'is-size-6': small}">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, excepturi?
+        {{description}}
       </h1>
       <div class="news-data">
         <div class="author">
@@ -15,13 +20,13 @@
             class="image is-24x24 circle"
             :style="`background-image: url('${photo}')`"
           ></figure>
-          <span>Google</span>
+          <span>{{author ? author : "ANONYMOUS"}}</span>
         </div>
         <div class="date">
           <span class="icon">
             <i class="far fa-clock"></i>
           </span>
-          <span class="time">20 hours ago</span>
+          <span class="time">{{offsetDate(date)}}</span>
         </div>
       </div>
     </div>
@@ -29,6 +34,7 @@
 </template>
 
 <script>
+import moment from "moment";
 import defaultImage from "../../assets/default.jpg";
 
 export default {
@@ -42,6 +48,26 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    tags: {
+      type: Array,
+      default: () => []
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    author: {
+      type: String
+    },
+    date: {
+      type: Date,
+      required: true
+    }
+  },
+  methods: {
+    offsetDate(date) {
+      return moment(date).locale("ru").fromNow();
     }
   }
 };

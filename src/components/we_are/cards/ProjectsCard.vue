@@ -82,9 +82,6 @@ export default {
       left: 20px;
       right: 20px;
     }
-    &__name {
-
-    }
     &__footer {
       position: absolute;
       bottom: 0;

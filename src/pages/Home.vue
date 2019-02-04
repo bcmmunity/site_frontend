@@ -6,15 +6,35 @@
           <div class="tile">
             <div class="tile is-parent is-8">
               <div class="tile is-child">
-                <NewsTile />
+                <NewsTile
+                  v-if="articles.length"
+                  :description="articles[0].description"
+                  :tags="articles[0].tags"
+                  :author="articles[0].author"
+                  :date="new Date(articles[0].date)"
+                />
               </div>
             </div>
             <div class="tile is-parent is-vertical is-4">
               <div class="tile is-child">
-                <NewsTile small />
+                <NewsTile
+                  small
+                  v-if="articles.length"
+                  :description="articles[1].description"
+                  :tags="articles[1].tags"
+                  :author="articles[1].author"
+                  :date="new Date(articles[1].date)"
+                />
               </div>
               <div class="tile is-child">
-                <NewsTile small />
+                <NewsTile
+                  small
+                  v-if="articles.length"
+                  :description="articles[2].description"
+                  :tags="articles[2].tags"
+                  :author="articles[2].author"
+                  :date="new Date(articles[2].date)"
+                />
               </div>
             </div>
           </div>
@@ -26,15 +46,14 @@
           <div class="columns">
             <div
               class="column"
-              v-for="(card, index) in newsCards"
+              v-for="(article, index) in articles"
               :key="index"
             >
               <NewsCard
-                :imgUrl="card.url"
-                :infoTheme="card.headline"
-                :infoDate="card.date"
-                :contentHeader="card.headline"
-                :contentText="card.text"
+                infoTheme="theme"
+                :infoDate="new Date([2012, 5, 6])"
+                contentHeader="lorem ipsum dolor"
+                contentText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat error totam aliquid inventore ea, asperiores voluptatum temporibus porro pariatur modi?"
               />
             </div>
           </div>
@@ -61,13 +80,13 @@ export default {
     NewsCard
   },
   created() {
-    this.loadNewsCards();
+    this.loadNews();
   },
   computed: {
-    ...mapGetters("home", ["newsCards"])
+    ...mapGetters("home", ["articles"])
   },
   methods: {
-    ...mapActions("home", ["loadNewsCards"])
+    ...mapActions("home", ["loadNews"])
   }
 };
 </script>

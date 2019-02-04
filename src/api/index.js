@@ -1,6 +1,6 @@
 import requests from "./requests";
 import stubs from "./stubs";
 
-const isStubsEnabled = true;
+const fake = true;
 
-export default isStubsEnabled ? stubs : requests;
+export default fake ? stubs : requests;

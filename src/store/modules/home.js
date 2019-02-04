@@ -1,24 +1,23 @@
 import api from "../../api";
 
 const state = {
-  newsTiles: [],
-  newsCards: []
+  articles: []
 }
 
 const getters = {
-  newsCards: state => state.newsCards
+  articles: state => state.articles
 }
 
 const mutations = {
-  UPDATE_NEWS_CARDS(state, cards) {
-    state.newsCards = cards;
+  UPDATE_ARTICLES(state, articles) {
+    state.articles = articles;
   }
 }
 
 const actions = {
-  loadNewsCards({commit}) {
-    api.getNewsCards()
-      .then(cards => commit("UPDATE_NEWS_CARDS", cards))
+  loadNews({commit}) {
+    api.getTopArticles()
+      .then(articles => commit("UPDATE_ARTICLES", articles))
   }
 }
 
